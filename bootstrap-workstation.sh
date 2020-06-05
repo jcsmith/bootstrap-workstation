@@ -27,7 +27,7 @@ echo "##################################################"
 echo "# Installing ansible via pip                     #"
 echo "##################################################"
 
-pip install --user ansible
+pip3 install --user ansible
 
 echo "##################################################"
 echo "# Creating initial ansible configuration         #"
@@ -43,12 +43,10 @@ cat <<-EOF > "${TMP_DIR}/requirements.yml"
 - name: geerlingguy.homebrew
 EOF
 
-
 echo "##################################################"
 echo "#  Installing modules from ansible galaxy        #"
 echo "##################################################"
 ansible-galaxy install -r requirements.yml
-
 
 echo "##################################################"
 echo "#  Installing homebrew and base packages         #"
@@ -76,4 +74,19 @@ REPO_DIR="${REPO_URL##*/}"
 REPO_DIR="${REPO_DIR%%.git}"
 
 git clone "${REPO_URL}"
+echo "${TMP_DIR}/${REPO_DIR}"
 cd "${TMP_DIR}/${REPO_DIR}"
+pwd
+ls -lah
+
+echo "##################################################"
+echo "# Installing additional modules from             #"
+echo "# from ansible galaxy.                           #"
+echo "##################################################"
+ansible-galaxy install -r requirements.yml
+
+echo "##################################################"
+echo "# Executing ansible-playbook for default config. #"
+echo "##################################################"
+
+ansible-playbook main.yml -i inventory

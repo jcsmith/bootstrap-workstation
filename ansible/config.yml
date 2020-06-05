@@ -1,0 +1,14 @@
+---
+homebrew_installed_packages:
+  - git
+  - bash
+  - bash-completion
+  - curl
+  - dos2unix
+  - git-extras
+  - gitup
+  - gnu-sed
+  - go
+  - gpg
+  - jq
+
