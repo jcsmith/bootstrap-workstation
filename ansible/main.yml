@@ -4,3 +4,6 @@
 
   vars_files:
     - config.yml
+
+  roles:
+    - role: geerlingguy.homebrew

@@ -73,8 +73,8 @@ echo "##################################################"
 REPO_DIR="${REPO_URL##*/}"
 REPO_DIR="${REPO_DIR%%.git}"
 
+
 git clone "${REPO_URL}"
-echo "${TMP_DIR}/${REPO_DIR}"
 cd "${TMP_DIR}/${REPO_DIR}"
 pwd
 ls -lah
@@ -83,10 +83,10 @@ echo "##################################################"
 echo "# Installing additional modules from             #"
 echo "# from ansible galaxy.                           #"
 echo "##################################################"
-ansible-galaxy install -r requirements.yml
+ansible-galaxy install -r ansible/requirements.yml
 
 echo "##################################################"
 echo "# Executing ansible-playbook for default config. #"
 echo "##################################################"
 
-ansible-playbook main.yml -i inventory
+ansible-playbook ansible/main.yml -i ansible/inventory
